@@ -6,10 +6,12 @@ import java.util.Queue;
 public class BinarySearchTree {
     private BstNode root;
 
+    // Check if the tree is empty
     public boolean isEmpty() {
         return (this.root == null);
     }
 
+    // Insert a new node with the given data
     public void insert(Integer data) {
 
         System.out.print("[input: " + data + "]");
@@ -23,6 +25,7 @@ public class BinarySearchTree {
         System.out.println();
     }
 
+    // Recursively insert a new node in the tree
     private BstNode insertNode(BstNode root, Integer data) {
 
         BstNode tmpNode = null;
@@ -47,10 +50,12 @@ public class BinarySearchTree {
         return insertNode(tmpNode, data);
     }
 
+    // Perform in-order traversal of the tree
     public void inOrderTraversal() {
         doInOrder(this.root);
     }
 
+    // Recursively perform in-order traversal
     private void doInOrder(BstNode root) {
         if (root != null) {
             doInOrder(root.getLeft());
@@ -59,10 +64,12 @@ public class BinarySearchTree {
         }
     }
 
+    // Perform pre-order traversal of the tree
     public void preOrderTraversal() {
         doPreOrder(this.root);
     }
 
+    // Recursively perform pre-order traversal
     private void doPreOrder(BstNode root) {
         if (root != null) {
             System.out.print(root.getData() + " ");
@@ -71,10 +78,12 @@ public class BinarySearchTree {
         }
     }
 
+    // Find the height of the tree
     public Integer findHeight() {
         return findHeight(this.root);
     }
 
+    // Recursively find the height of the tree
     private Integer findHeight(BstNode node) {
         if (node == null) {
             return -1;
@@ -84,10 +93,12 @@ public class BinarySearchTree {
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
+    // Get the depth of a node in the tree
     public int getDepth(BstNode node) {
         return getDepth(this.root, node, 0);
     }
 
+    // Recursively get the depth of a node in the tree
     private int getDepth(BstNode root, BstNode node, int depth) {
         if (root == null) {
             return -1;
@@ -102,11 +113,13 @@ public class BinarySearchTree {
         return getDepth(root.getRight(), node, depth + 1);
     }
     
+    // Print the tree
     public void print() {
         System.out.println("\n==== BST Print ===== \n");
         print("", root, false);
     }
 
+    // Helper method to print the tree with prefixes to indicate branches
     private void print(String prefix, BstNode node, boolean isLeft) {
         if (node != null) {
             print(prefix + (isLeft ? "|-- " : "|__ "), node.getRight(), false);
